@@ -3,12 +3,13 @@ import {Main} from "./src/app/Main";
 import {store} from "./src/app/store";
 import {Provider} from "react-redux";
 import React from "react";
+import {Login} from "./src/features/Login/Login";
 
 export default function App() {
     return (
         <Provider store={store}>
             <ScrollView style={styles.container}>
-                <Main/>
+                <Login/>
             </ScrollView>
         </Provider>
     )
