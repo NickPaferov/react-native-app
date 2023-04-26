@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {useAppDispatch, useAppSelector} from "../../app/store";
+import {useAppDispatch} from "../../app/store";
 import {Button, Linking, StyleSheet, Text, TextInput, TouchableOpacity, View} from "react-native";
 import {Controller, useForm} from "react-hook-form";
 import {loginTC} from "./auth-reducer";
@@ -28,7 +28,6 @@ const schema = yup
 export const Login = () => {
 
     const dispatch = useAppDispatch()
-    const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn)
 
     const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
@@ -40,9 +39,11 @@ export const Login = () => {
         },
         resolver: yupResolver(schema),
     })
+
     const onSubmit = (data: FormInputsType) => {
         dispatch(loginTC(data))
     }
+
     const toggleVisibility = () => {
         setIsPasswordVisible(!isPasswordVisible)
     }
@@ -123,7 +124,7 @@ const styles = StyleSheet.create({
         gap: 50,
     },
     clarification: {
-        marginTop: 350,
+        marginTop: 150,
         alignItems: "center",
     },
     form: {
